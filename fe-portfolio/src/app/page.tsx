@@ -1,72 +1,112 @@
-// src/app/page.tsx
 "use client";
 
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Download, Github, Linkedin, Mail, MessageCircle } from "lucide-react";
 import Image from "next/image";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+import Link from "next/link";
 
 export default function Portfolio() {
-  const projects = [
-    { title: "Project One", description: "A cool project", link: "#" },
-    { title: "Project Two", description: "Another project", link: "#" },
-    { title: "Project Three", description: "Something awesome", link: "#" },
-  ];
-
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-      >
-        <div className="min-h-screen flex flex-col items-center p-8 sm:p-20">
-          {/* Header */}
-          <header className="flex flex-col items-center gap-4 mb-16">
-            <Image
-              src="/next.svg"
-              alt="Portfolio Logo"
-              width={180}
-              height={38}
-              className="dark:invert"
-            />
-            <h1 className="text-3xl font-bold">Ho Ngoc An Portfolio</h1>
-            <p className="text-center text-muted-foreground max-w-xl">
-              Fullstack Developer | Next.js + React + Tailwind | Building modern web apps
+    <>
+      {/* Hero Section */}
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden bg-zinc-900 text-white p-8">
+        <div className="container grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="space-y-6">
+            <h1 className="text-5xl font-bold tracking-tight md:text-7xl">
+              Hi, I'm Lê Thành Trung
+            </h1>
+            <p className="max-w-lg text-xl text-zinc-400">
+              I craft exceptional digital experiences with code, creativity, and a passion for innovation.
             </p>
-          </header>
 
-          {/* Projects Section */}
-          <main className="w-full max-w-4xl grid gap-8">
-            {projects.map((p, idx) => (
-              <a
-                key={idx}
-                href={p.link}
-                className="group border rounded-lg p-6 hover:shadow-lg transition-shadow"
-              >
-                <h2 className="text-xl font-semibold group-hover:text-foreground">
-                  {p.title}
-                </h2>
-                <p className="text-muted-foreground mt-2">{p.description}</p>
-              </a>
-            ))}
-          </main>
-
-          {/* Footer */}
-          <footer className="mt-auto flex flex-col items-center gap-4 pt-16">
-            <p className="text-sm text-muted-foreground">&copy; 2025 Ho Ngoc An</p>
-            <div className="flex gap-4">
-              <a href="https://github.com/KyungUwU" target="_blank" rel="noopener noreferrer">
-                GitHub
-              </a>
-              <a href="https://www.linkedin.com/in/ho-ngoc-an" target="_blank" rel="noopener noreferrer">
-                LinkedIn
-              </a>
-              <a href="mailto:hngocan.forwork@gmail.com">Email</a>
+            <div className="flex gap-4 flex-wrap">
+              <Button variant="primary" className="flex items-center gap-2">
+                View Projects <ArrowRight className="h-4 w-4" />
+              </Button>
+              <Button variant="outline" className="flex items-center gap-2">
+                Contact Me
+              </Button>
             </div>
-          </footer>
+
+            <div className="flex gap-4 pt-4">
+              <Link href="https://github.com/xirothedev" target="_blank" rel="noopener noreferrer">
+                <Github className="h-6 w-6 text-white hover:text-purple-400" />
+              </Link>
+              <Link href="https://www.linkedin.com/in/xirothedev/" target="_blank" rel="noopener noreferrer">
+                <Linkedin className="h-6 w-6 text-white hover:text-purple-400" />
+              </Link>
+              <Link href="mailto:lethanhtrung.trungle@gmail.com">
+                <Mail className="h-6 w-6 text-white hover:text-purple-400" />
+              </Link>
+              <Link href="https://discord.com/users/1216624112139632711" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="h-6 w-6 text-white hover:text-purple-400" />
+              </Link>
+            </div>
+          </div>
+
+          <div className="flex justify-center">
+            <div className="relative w-64 h-64 rounded-xl overflow-hidden border border-zinc-700">
+              <Image
+                src="/thumbnail.jpeg"
+                alt="XiroTheDev"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
         </div>
-      </body>
-    </html>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-32 bg-zinc-800 text-white">
+        <div className="container space-y-8">
+          <h2 className="text-4xl font-bold">About Me</h2>
+          <p>
+            I'm a passionate software engineer specializing in frontend development with React and Next.js.
+            Comfortable working with backend technologies like Node.js and NestJS.
+          </p>
+          <p>
+            I enjoy creating intuitive, performant, and accessible digital experiences, contributing to open-source,
+            and staying up-to-date with the latest tech.
+          </p>
+
+          <Link href="/lethanhtrung-webdeveloper-cv.pdf" target="_blank" rel="noopener noreferrer">
+            <Button className="bg-purple-600 hover:bg-purple-700 text-white flex items-center gap-2">
+              <Download className="h-4 w-4" /> Download Resume
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-32 bg-zinc-900 text-white">
+        <div className="container">
+          <h2 className="text-4xl font-bold mb-8">Projects</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Replace with your project cards */}
+            <div className="rounded-lg border border-zinc-700 p-6 bg-zinc-800">
+              <h3 className="font-bold text-xl mb-2">Project 1</h3>
+              <p className="text-zinc-400">Description of project 1</p>
+              <Link href="#" className="text-purple-400 mt-2 block">View Repo</Link>
+            </div>
+            <div className="rounded-lg border border-zinc-700 p-6 bg-zinc-800">
+              <h3 className="font-bold text-xl mb-2">Project 2</h3>
+              <p className="text-zinc-400">Description of project 2</p>
+              <Link href="#" className="text-purple-400 mt-2 block">View Repo</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-32 bg-zinc-800 text-white">
+        <div className="container space-y-8">
+          <h2 className="text-4xl font-bold">Contact Me</h2>
+          <p>Email: lethanhtrung.trungle@gmail.com</p>
+          <p>LinkedIn: linkedin.com/in/xirothedev</p>
+          <p>GitHub: github.com/xirothedev</p>
+        </div>
+      </section>
+    </>
   );
 }
